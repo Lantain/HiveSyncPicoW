@@ -17,4 +17,10 @@ class MQ135_Sensor:
             AD_value = self.ADC_ConvertedValue.read_u16() * conversion_factor
             DIN_value = self.DIN.value()
             
-            return { 'analog': AD_value, 'triggered': DIN_value }
+            return { 'air_quality': AD_value, 'air_quality_warn': DIN_value }
+        
+    def log(self):
+        v = self.values()
+        print("== MQ135: ==")
+        print("The current Gas AD value = ",v["air_quality"],"V")
+        print("The current DIN value: ",v["air_quality_warn"])

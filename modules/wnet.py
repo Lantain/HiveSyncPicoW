@@ -1,6 +1,6 @@
 import config
 import network
-import led
+import modules.led as led
 from time import sleep
 
 wlan = network.WLAN(network.STA_IF)

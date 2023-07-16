@@ -7,4 +7,4 @@ def send_record(payload):
         headers = {'content-type': 'application/json'}
         data = ujson.dumps(payload)
         response = urequests.post(url, headers =headers, data=data).json()
-        print(response) 
+        print(response)

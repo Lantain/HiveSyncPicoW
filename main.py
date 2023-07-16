@@ -2,27 +2,22 @@ from time import sleep
 
 from sensors.dht22 import DHT22_Sensor
 from sensors.mq135 import MQ135_Sensor
-
+from sensors.model import build_sensors_payload
 import api
-import led
-import wnet
+import modules.led as led
+import modules.wnet as wnet
 
-dht_sensor = DHT22_Sensor()
-mq_sensor = MQ135_Sensor()
+sensors = list([
+    DHT22_Sensor(),
+    MQ135_Sensor()
+])
 
 def main():
-    dht_value = dht_sensor.values()
-    mq_value = mq_sensor.values()
+    payload = build_sensors_payload(sensors)
     
-    payload = {
-        'temperature': dht_value['temperature'],
-        'humidity': dht_value['humidity'],
-        'air_quality': mq_value['analog']
-    }
     wnet.connect()
     api.send_record(payload)
     wnet.disconnect()
-
 
 
 led.say_hello()

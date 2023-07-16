@@ -3,9 +3,9 @@ import config
 from machine import Pin
 
 class DHT22_Sensor:
-    sensor: dht.DHT22 = None
+    sensor = None
     
-    def __init__(self) -> None:
+    def __init__(self):
         if config.PIN_DHT_22 is not None:
             self.sensor = dht.DHT22(Pin(13))
 
@@ -16,3 +16,9 @@ class DHT22_Sensor:
                 'temperature': self.sensor.temperature(),
                 'humidity': self.sensor.humidity()
             }
+            
+    def log(self):
+        v = self.values()
+        print("== DHT22: ==")
+        print(f"Temperature : {v['temperature']:.1f}°C")
+        print(f"Humidity    : {v['humidity']:.1f}%")

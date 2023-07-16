@@ -1,3 +1,4 @@
+DEBUG = True
 SENSOR_ID = "picone"
 WIFI_SSID = ""
 WIFI_PASSWORD = ""

@@ -1,6 +1,11 @@
-# class Sensor:
-#     """A simple example class"""
-#     i = 12345
+import config
 
-#     def f(self):
-#         return 'hello world'
+def build_sensors_payload(sensors):
+    merged = dict()
+    for sensor in sensors:
+        v = sensor.values()
+        if v is not None:
+            merged.update(v)
+            if config.DEBUG is True:
+                v.log()
+    return merged
