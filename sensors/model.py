@@ -7,5 +7,5 @@ def build_sensors_payload(sensors):
         if v is not None:
             merged.update(v)
             if config.DEBUG is True:
-                v.log()
+                sensor.log()
     return merged

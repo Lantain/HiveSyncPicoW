@@ -12,19 +12,20 @@ sensors = list([
     MQ135_Sensor()
 ])
 
-def main():
+def mainstep():
     payload = build_sensors_payload(sensors)
     
     wnet.connect()
     api.send_record(payload)
     wnet.disconnect()
 
+if __name__ == '__main__':
+    led.say_hello()
+    while True:
+        try:
+            sleep(120)
+            mainstep()                   
+        except OSError as e:
+            print("Failed reception")
+            led.panic()
 
-led.say_hello()
-while True:
-    try:
-        sleep(120)
-        main()                   
-    except OSError as e:
-        print("Failed reception")
-        led.panic()
