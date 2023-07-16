@@ -1,13 +1,14 @@
 import config
-import wnet
+import network
 import led
 from time import sleep
+
+wlan = network.WLAN(network.STA_IF)
 
 def connect():
     print("Attempting")
     led.value(0)
     #Connect to WLAN
-    wlan = wnet.WLAN(wnet.STA_IF)
     wlan.active(True)
     wlan.connect(config.WIFI_SSID, config.WIFI_PASSWORD)
     
@@ -19,6 +20,5 @@ def connect():
     led.value(1)
     
 def disconnect():
-    wlan = wnet.WLAN(wnet.STA_IF)
     wlan.active(False)
     led.value(0)
