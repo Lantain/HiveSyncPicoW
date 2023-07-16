@@ -17,5 +17,10 @@ def say_hello():
     blink()
     blink()
     
+def panic():
+    print("PANIC")
+    for i in range(10):
+        blink()
+    
 def value(v):
     led.value(v)

@@ -6,7 +6,7 @@ from time import sleep
 wlan = network.WLAN(network.STA_IF)
 
 def connect():
-    print("Attempting")
+    print("Connecting to WLAN...")
     led.value(0)
     #Connect to WLAN
     wlan.active(True)
@@ -20,5 +20,6 @@ def connect():
     led.value(1)
     
 def disconnect():
+    print("Disconnecting...")
     wlan.active(False)
     led.value(0)

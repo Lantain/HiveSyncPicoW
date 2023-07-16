@@ -5,7 +5,6 @@ WIFI_PASSWORD = ""
 
 HIVESYNC_HOST = "http://192.168.50.214:2000"
 
-
 PIN_DHT_22 = 19 # GPIO pin name
 
 PIN_MQ135_ADC = 0 # Needs ADC Number

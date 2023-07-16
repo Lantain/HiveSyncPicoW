@@ -27,3 +27,4 @@ while True:
         main()                   
     except OSError as e:
         print("Failed reception")
+        led.panic()
