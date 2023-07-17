@@ -4,6 +4,7 @@ from sensors.dht22 import DHT22_Sensor
 from sensors.mq135 import MQ135_Sensor
 from sensors.model import build_sensors_payload
 import api
+import config
 import modules.led as led
 import modules.wnet as wnet
 
@@ -23,7 +24,7 @@ if __name__ == '__main__':
     led.say_hello()
     while True:
         try:
-            sleep(120)
+            sleep(config.STEP_SLEEP)
             mainstep()                   
         except OSError as e:
             print("Failed reception")
