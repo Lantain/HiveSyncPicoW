@@ -1,16 +1,15 @@
 import config
-from machine import Pin, Timer, ADC
 conversion_factor = 3.3 / (65535)
 
 class MQ135_Sensor:
     ADC_ConvertedValue = None
     DIN = None
     
-    def __init__(self) -> None:
+    def __init__(self, pin_adc, pin_din) -> None:
         if config.PIN_MQ135_ADC is not None:
-            self.ADC_ConvertedValue = ADC(0)
+            self.ADC_ConvertedValue = pin_adc
         if config.PIN_MQ135_DIN is not None:
-            self.DIN = Pin(19,Pin.IN)
+            self.DIN = pin_din
 
     def values(self):
         if self.ADC_ConvertedValue is not None and self.DIN is not None:
